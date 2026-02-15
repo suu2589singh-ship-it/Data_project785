@@ -16,7 +16,7 @@ app.get("/",  (req,res)=> {
 app.use("/",routers)
 client();
 
-
-app.listen(process.env.Port,()=>{
+const port=process.env.PORT ||3000
+app.listen(port,()=>{
     console.log("runnnning it")
 })
