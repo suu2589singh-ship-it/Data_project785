@@ -7,7 +7,7 @@ const entrys=(req,res)=>{
 
     if(BillNo=="" && Name=="" && Product=="" && Total==""){
         return(
-            res.json({massage:"fill all field"})
+            res.status(400).json({massage:"field are empty"})
         )
     }
 
@@ -18,7 +18,7 @@ const entrys=(req,res)=>{
             Product:Product,
             Total:Total
         })
-        return res.status(201)
+        return res.status(200).json({massage:"Entery save"})
 
 }
 

@@ -1,6 +1,10 @@
 const mongo=require("mongoose")
 
 const entry=new mongo.Schema({
+    author:{
+        type:mongo.Schema.Types.ObjectId,
+        ref:User
+    },
     BillNo:{
         type:String,
         required:true,

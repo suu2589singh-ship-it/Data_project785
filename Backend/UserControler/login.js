@@ -9,20 +9,22 @@ const login=async(req,res)=>{
         const{email,password}=req.body;
     const users=await user.findOne({email}).select("+password")
     if(!users){
-        return res.send("somthinng went to wronng")
+        return res.status(400).json({massage:"something went to wrong"})
 
     }
-    const pass=await bcrypt.compare(password,users.password)
-    if(pass)res.send("your login")
+    const ismatch=await bcrypt.compare(password,users.password)
+    if(!ismatch){
+        return res.status(400).json({massage:"something went to wrong"})
+    }
     
-    let token=jwt.sign({id:user_id},process.env.jwt,);
+    let token=jwt.sign({id:user_id},process.env.JWT,);
         res.cookie("token",token,{
             httpOnly:true,
             secure:true,
             sameSite:"strict",
             maxAge:60*1000
             });
-        return res.send("login Succefuly")
+        return res.status(200).json({massage:"Your login"})
 
     
 

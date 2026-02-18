@@ -6,11 +6,11 @@ const auth=(req,res)=>{
     if(!token){
         return res.status(401).json({massage:"faild"})
     }
-    jws.verify(token.process.env.jwt,(err,decode)=>{
+    jws.verify(token,process.env.JWT,(err,decode)=>{
         if(err){
-            return res.json({massage:"failed"})
+            return res.status(400).json({massage:"failed"})
         }
-        res.json({massage:"ok",decode})
+        res.status(200)({massage:"ok",decode})
     })
 }
 

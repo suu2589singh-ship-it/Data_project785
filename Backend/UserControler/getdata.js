@@ -14,4 +14,4 @@ const getdata=async(res,req)=>{
 
 }
 
-module.export=getdata
+module.exports=getdata
