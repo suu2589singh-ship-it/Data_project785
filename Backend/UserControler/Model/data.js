@@ -3,7 +3,7 @@ const mongo=require("mongoose")
 const entry=new mongo.Schema({
     author:{
         type:mongo.Schema.Types.ObjectId,
-        ref:User
+        ref:"User"
     },
     BillNo:{
         type:String,
